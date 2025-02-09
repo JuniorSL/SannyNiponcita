@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín 💖</title>
+    <style>
+        body {
+    	   font-family: Arial, sans-serif;
+   	   text-align: center;
+    	   background: url('D:/fondo2.jpg') no-repeat center center fixed;
+    	   background-size: cover;
+    	   color: white;
+    	   display: flex;
+    	   flex-direction: column;
+    	   justify-content: center;
+    	   align-items: center;
+    	   height: 100vh;
+    	   position: relative;
+    	   overflow: hidden;
+        }
+        .container {
+            background: white;
+            color: #ff4d6d;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        #no {
+            background-color: white;
+            color: #ff4d6d;
+            position: absolute;
+            z-index: 9999; /* Hace que el botón esté por encima de todo */
+        }
+        .hidden {
+            display: none;
+        }
+        #image-container {
+            position: absolute;
+            top: 10px;
+            width: 200px;
+            height: 200px;
+        }
+        #image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="image-container">
+        <img id="image" src="D:/inicio.gif" alt="Imagen dinámica">
+    </div>
+
+    <div class="container" id="question">
+    <h1>¿Quieres ser mi San Valentín? ❤️</h1>
+        <p id="message"></p>
+        <div class="buttons">
+            <button id="yes" onclick="acceptLove()">Sí 💖</button>
+            <button id="no" onclick="countNo()" onmouseover="moveNo()">No 💔</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="response">
+        <h1>¡Sabía que dirías que sí! 💘</h1>
+        <p>Eres la persona más especial del mundo. 🥰</p>
+    </div>
+
+    <script>
+        let noCount = 0;
+        let buttonYes = document.getElementById('yes');
+        let buttonNo = document.getElementById('no');
+        let imageElement = document.getElementById('image');
+        let originalSize = 18; // Tamaño inicial del botón "Sí"
+
+        const messages = [
+            "¿Estás seguro? 🥺",
+            "No seas así... 😢",
+            "Piensa en los buenos momentos 💕",
+            "Dame una oportunidad 😭",
+            "¡Te prometo chocolates! 🍫",
+            "¡Por favor, di que sí! 😍"
+        ];
+
+        const images = [
+            "D:/dos.gif",
+            "D:/tres.gif",
+            "D:/cuatro.gif",
+            "D:/cinco.gif",
+            "D:/seis.gif",
+            "D:/siete.gif"
+        ];
+
+        function acceptLove() {
+            document.getElementById('question').classList.add('hidden');
+            document.getElementById('response').classList.remove('hidden');
+            imageElement.src = "D:/uno.gif"; // Imagen final cuando dice que sí
+        }
+
+        function countNo() {
+            if (noCount < messages.length) {
+                document.getElementById('message').innerText = messages[noCount];
+            }
+            if (noCount < images.length) {
+                imageElement.src = images[noCount]; // Cambia la imagen en cada clic de "No"
+            }
+            noCount++;
+
+            // Aumentar tamaño del botón "Sí" un 10% en cada clic de "No"
+            originalSize *= 1.10;
+            buttonYes.style.fontSize = `${originalSize}px`;
+            buttonYes.style.padding = `${originalSize / 2.5}px ${originalSize}px`; // Ajusta el padding
+        }
+
+
+function moveNo() {
+    if (noCount >= 6) {
+        let buttonWidth = buttonNo.offsetWidth;
+        let buttonHeight = buttonNo.offsetHeight;
+
+        // Obtener el tamaño del viewport sin barras de desplazamiento
+        let screenWidth = document.documentElement.clientWidth;
+        let screenHeight = document.documentElement.clientHeight;
+
+        // Obtener la posición actual del botón
+        let currentX = buttonNo.offsetLeft;
+        let currentY = buttonNo.offsetTop;
+
+        // Definir un rango pequeño de movimiento (máx 100px en cualquier dirección)
+        let moveRange = 400; 
+
+        // Calcular nuevas coordenadas sin salirse de los márgenes
+        let newX = Math.min(Math.max(currentX + (Math.random() * moveRange - moveRange / 2), 30), screenWidth - buttonWidth - 30);
+        let newY = Math.min(Math.max(currentY + (Math.random() * moveRange - moveRange / 2), 30), screenHeight - buttonHeight - 30);
+
+        // Aplicar la nueva posición
+        buttonNo.style.left = `${newX}px`;
+        buttonNo.style.top = `${newY}px`;
+
+        // Asegurar que el botón siempre esté adelante
+        buttonNo.style.zIndex = "9999";
+
+        // Mostrar las coordenadas en la consola
+        console.log(`Posición del botón No: x=${newX}, y=${newY}`);
+    }
+}
+
+
+    </script>
+</body>
+</html>
