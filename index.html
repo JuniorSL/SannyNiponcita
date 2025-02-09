@@ -8,7 +8,7 @@
         body {
     	   font-family: Arial, sans-serif;
    	   text-align: center;
-    	   background: url('D:/fondo2.jpg') no-repeat center center fixed;
+    	   background: url('https://juniorsl.github.io/SannyNiponcita/fondo2.jpg') no-repeat center center fixed;
     	   background-size: cover;
     	   color: white;
     	   display: flex;
@@ -21,7 +21,7 @@
         }
         .container {
             background: white;
-            color: #ff4d6d;
+            color: #fc002d;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -42,12 +42,12 @@
             transition: all 0.3s ease-in-out;
         }
         #yes {
-            background-color: #ff4d6d;
+            background-color: #09ce00;
             color: white;
         }
         #no {
-            background-color: white;
-            color: #ff4d6d;
+            background-color: #f72323;
+            color: white;
             position: absolute;
             z-index: 9999; /* Hace que el botón esté por encima de todo */
         }
@@ -57,8 +57,8 @@
         #image-container {
             position: absolute;
             top: 10px;
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
         }
         #image-container img {
             width: 100%;
@@ -67,12 +67,19 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
+#message {
+    color: #fcbb00; /* Cambia el color del mensaje */
+    font-weight: bold;
+    font-size: 20px; /* Ajusta el tamaño si lo deseas */
+    transition: color 0.3s ease-in-out; /* Efecto suave */
+}
     </style>
 </head>
 <body>
 
     <div id="image-container">
-        <img id="image" src="D:/inicio.gif" alt="Imagen dinámica">
+        <img id="image" src="https://juniorsl.github.io/SannyNiponcita/inicio.gif" alt="Imagen dinámica">
     </div>
 
     <div class="container" id="question">
@@ -86,7 +93,10 @@
 
     <div class="container hidden" id="response">
         <h1>¡Sabía que dirías que sí! 💘</h1>
-        <p>Eres la persona más especial del mundo. 🥰</p>
+        <p>Eres una minina niponcita maravillosa! 🥰 <br>
+	 Ahora estás oficialmente invitada en el club de abrazos infinitos  <br><br>
+	 <strong>¡Te Quiero Mucho! 💘</strong>
+	</p>
     </div>
 
     <script>
@@ -97,27 +107,33 @@
         let originalSize = 18; // Tamaño inicial del botón "Sí"
 
         const messages = [
-            "¿Estás seguro? 🥺",
-            "No seas así... 😢",
+            "¿Estás segura? 🥺",
+            "Te reto a que no presiones 'No' otra vez... 🤭",
             "Piensa en los buenos momentos 💕",
-            "Dame una oportunidad 😭",
-            "¡Te prometo chocolates! 🍫",
-            "¡Por favor, di que sí! 😍"
+            "¡Di que sí! 😍",
+            "¡ERROR 404! La opción 'No' no está disponible 😜",
+            "Cada 'No' que presionas, un perrito deja de mover su colita 🐶💔",
+            "Cuidado... cada vez que presionas 'No', un unicornio desaparece 🦄💔",
+            "Si dices que no, un gatito triste llorará... 🐱💔",
+            "¡Mi corazoncito no aguanta más! 💘😭"
         ];
 
         const images = [
-            "D:/dos.gif",
-            "D:/tres.gif",
-            "D:/cuatro.gif",
-            "D:/cinco.gif",
-            "D:/seis.gif",
-            "D:/siete.gif"
+            "https://juniorsl.github.io/SannyNiponcita/dos.gif",
+            "https://juniorsl.github.io/SannyNiponcita/tres.gif",
+            "https://juniorsl.github.io/SannyNiponcita/cuatro.gif",
+            "https://juniorsl.github.io/SannyNiponcita/cinco.gif",
+            "https://juniorsl.github.io/SannyNiponcita/seis.gif",
+            "https://juniorsl.github.io/SannyNiponcita/siete.gif",
+            "https://juniorsl.github.io/SannyNiponcita/ocho.gif",
+            "https://juniorsl.github.io/SannyNiponcita/nueve.gif",
+            "https://juniorsl.github.io/SannyNiponcita/diez.gif"
         ];
 
         function acceptLove() {
             document.getElementById('question').classList.add('hidden');
             document.getElementById('response').classList.remove('hidden');
-            imageElement.src = "D:/uno.gif"; // Imagen final cuando dice que sí
+            imageElement.src = "https://juniorsl.github.io/SannyNiponcita/uno.gif"; // Imagen final cuando dice que sí
         }
 
         function countNo() {
@@ -137,7 +153,7 @@
 
 
 function moveNo() {
-    if (noCount >= 6) {
+    if (noCount >= 9) {
         let buttonWidth = buttonNo.offsetWidth;
         let buttonHeight = buttonNo.offsetHeight;
 
